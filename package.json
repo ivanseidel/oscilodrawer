@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "draftlog": "^1.0.12",
+    "inquirer": "^5.2.0",
+    "mosca": "^2.8.0",
+    "mqtt": "^2.17.0"
+  }
+}
