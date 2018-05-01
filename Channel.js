@@ -13,6 +13,9 @@ module.exports = class Channel {
     let frames = 0
     let draft = console.draft()
     while (this.run) {
+      // this.stream.nextBuffer()
+      // this.stream.nextBuffer()
+      // this.stream.nextBuffer()
       this.client.publish('frame', this.stream.nextBuffer())
       draft(` Streaming - Frame: ${frames++}`)
       await sleep(100)

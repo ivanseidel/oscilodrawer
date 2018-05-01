@@ -13,7 +13,7 @@ async function main() {
   await waitConnect(client)
   console.log('connected!')
 
-  let stream = new PointStream(path.join(__dirname, `streams/beer.json`))
+  let stream = new PointStream(path.join(__dirname, `streams/${process.env.MEDIA}.json`))
   let channel = new Channel(stream, client)
   
   await channel.start()
@@ -21,7 +21,7 @@ async function main() {
 
 async function waitConnect(client) {
   while(!client.connected) {
-    await sleep(50)
+    await sleep(5)
   }
 }
 

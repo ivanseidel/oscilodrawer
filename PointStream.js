@@ -28,7 +28,7 @@ module.exports = class PointStream {
     let payload = new Buffer.alloc(array.length)
 
     for (let i = 0; i < len; i++) {
-      payload.writeUInt8(array[i], i)
+      payload.writeUInt8(Math.min(0xFF, Math.max(0x00, array[i])), i)
     }
 
     return payload

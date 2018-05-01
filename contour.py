@@ -33,7 +33,7 @@ def processPoints(im, debug):
       continue
 
     # Try approximating poligon to simplify number of points
-    approx = cv2.approxPolyDP(c, 3, True)
+    approx = cv2.approxPolyDP(c, 6, True)
 
     # Sum total points processed
     totalP = totalP + len(approx)
@@ -60,6 +60,22 @@ def processPoints(im, debug):
   points = []
 
   # Loop over selected contours and append everything to a single array of x, y, x, y, x, y... coordinates
+  # points.append(1)
+  # points.append(1)
+  
+  # points.append(1)
+  # points.append(255)
+
+  # points.append(255)
+  # points.append(255)
+
+  # points.append(255)
+  # points.append(1)
+
+  # points.append(1)
+  # points.append(1)
+  
+
   for contour in allcnts:
     for p in contour:
       x = p[0][0] * 1.0
@@ -68,6 +84,11 @@ def processPoints(im, debug):
       yOut = int(math.floor(y / im.shape[1] * 255))
       points.append(xOut)
       points.append(yOut)
+      points.append(0)
+
+    points.append(0)
+    points.append(0)
+    points.append(0)
 
   # Return points
   return points
@@ -79,7 +100,7 @@ def savePoints(points, name):
 
 # im = cv2.imread('bat.png')
 
-debug = False
+debug = True
 fileName = 'beer.mp4'
 if len(sys.argv) >= 2:
   fileName = sys.argv[2]
@@ -105,7 +126,7 @@ while True: # cap.isOpened()):
     if ret == False:
         cap.set(2 , 0)
 
-        if recording:
+        if not debug and recording:
           # Stop point saving
           recording = False
 
